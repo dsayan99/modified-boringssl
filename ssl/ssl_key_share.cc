@@ -37,6 +37,8 @@
 #include <sys/socket.h>
 #include <arpa/inet.h>
 #include <unistd.h>
+#include <iostream>
+#include <cstring>
 
 BSSL_NAMESPACE_BEGIN
 
@@ -245,12 +247,26 @@ class X25519Kyber768KeyShare : public SSLKeyShare {
     }
     
     //Update
+    
+    std:: string server_ip;
+    std:: cout << "Enter server IP address: ";
+    std:: cin >> server_ip;
+    int server_port;
+    std:: cout << "Enter the Port Number: ";
+    std:: cin >> server_port;
+    
     int sock = 0;
     struct sockaddr_in serv_addr;
     sock = socket(AF_INET, SOCK_STREAM, 0);
     serv_addr.sin_family = AF_INET;
-    serv_addr.sin_port = htons(8080);
-    inet_pton(AF_INET, "127.0.0.1", &serv_addr.sin_addr);
+    serv_addr.sin_port = htons(server_port);
+    
+    //if (inet_pton(AF_INET, server_ip.c_str(), &server_addr.sin_addr) <= 0) {
+        //std::cerr << "Invalid address or Address not supported" << std::endl;
+        //return -1;
+    //}
+    
+    inet_pton(AF_INET, server_ip.c_str(), &serv_addr.sin_addr);
     connect(sock, (struct sockaddr *)&serv_addr, sizeof(serv_addr));
     read(sock, secret.data(), 32);
     close(sock);
@@ -287,12 +303,20 @@ class X25519Kyber768KeyShare : public SSLKeyShare {
     }
     
     //Update
+    
+    std:: string server_ip;
+    std:: cout << "Enter server IP address: ";
+    std:: cin >> server_ip;
+    int server_port;
+    std:: cout << "Enter the Port Number: ";
+    std:: cin >> server_port;
+    
     int sock = 0;
     struct sockaddr_in serv_addr;
     sock = socket(AF_INET, SOCK_STREAM, 0);
     serv_addr.sin_family = AF_INET;
-    serv_addr.sin_port = htons(8080);
-    inet_pton(AF_INET, "127.0.0.1", &serv_addr.sin_addr);
+    serv_addr.sin_port = htons(server_port);
+    inet_pton(AF_INET, server_ip.c_str(), &serv_addr.sin_addr);
     connect(sock, (struct sockaddr *)&serv_addr, sizeof(serv_addr));
     read(sock, secret.data(), 32);
     close(sock);		
