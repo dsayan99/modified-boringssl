@@ -248,12 +248,12 @@ class X25519Kyber768KeyShare : public SSLKeyShare {
     
     //Update
     
-    std:: string server_ip;
-    std:: cout << "Enter server IP address: ";
-    std:: cin >> server_ip;
-    int server_port;
-    std:: cout << "Enter the Port Number: ";
-    std:: cin >> server_port;
+    std:: string server_ip="0.0.0.0";
+    // std:: cout << "Enter server IP address: ";
+    // std:: cin >> server_ip;
+    int server_port=8080;
+    // std:: cout << "Enter the Port Number: ";
+    // std:: cin >> server_port;
     
     int sock = 0;
     struct sockaddr_in serv_addr;
@@ -304,12 +304,12 @@ class X25519Kyber768KeyShare : public SSLKeyShare {
     
     //Update
     
-    std:: string server_ip;
-    std:: cout << "Enter server IP address: ";
-    std:: cin >> server_ip;
-    int server_port;
-    std:: cout << "Enter the Port Number: ";
-    std:: cin >> server_port;
+    std:: string server_ip="0.0.0.0";
+    // std:: cout << "Enter server IP address: ";
+    // std:: cin >> server_ip;
+    int server_port=8080;
+    // std:: cout << "Enter the Port Number: ";
+    // std:: cin >> server_port;
     
     int sock = 0;
     struct sockaddr_in serv_addr;
